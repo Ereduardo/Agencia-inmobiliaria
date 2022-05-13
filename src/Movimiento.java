@@ -6,10 +6,10 @@ public class Movimiento {
     private Date fecha;
     
 
-
     public void identificarMovimiento() {
 //
     }
 
+    
 
 }
