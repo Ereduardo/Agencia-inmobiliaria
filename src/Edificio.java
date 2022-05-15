@@ -13,7 +13,4 @@ public class Edificio extends Inmueble {
 //
     }
 
-    public void pedirDatos(){
-//
-    }
 }

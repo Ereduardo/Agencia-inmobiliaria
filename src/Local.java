@@ -7,8 +7,6 @@ public class Local extends Inmueble {
 //
     }
 
-    public void pedirDatos(){
-//        
-    }
+    
 
 }

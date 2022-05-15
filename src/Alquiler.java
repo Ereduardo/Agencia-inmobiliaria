@@ -6,7 +6,10 @@ public class Alquiler {
 
 
     public void alquilar(Inmueble inmueble,Inquilino inquilino,Factura factura){
-//
+        Inquilino inquilino1 = new Inquilino();
+            inmueble = this.inmueble;
+            inquilino = this.inquilino;
+            factura = this.factura;
     }
 
 
