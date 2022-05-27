@@ -1,6 +1,8 @@
+import java.util.Vector;
+
 public class Edificio extends Inmueble {
-    private int nPisos;
-    private int nInmuebles;
+
+    
 
     Edificio(){}
 

@@ -1,3 +1,6 @@
+import java.util.Vector;
+import java.util.Scanner;
+
 public abstract class Inmueble {
     protected String direccion;
     protected String descripcionInmueble;
@@ -5,10 +8,13 @@ public abstract class Inmueble {
     protected int idMueble;
     protected double precioAlquiler;
 
-    public void pedirDatos(){ //Lo coloqué aquí para que todas las clases hija lo hereden
-        //en vez de declararlo en todas las clases
-//
-            }
+    private static Vector inmuebles = new Vector(10,5);
+    
+    Inmueble(){
+
+        
+    }
+    
     public void registrarInmueble(){
 //
     }
@@ -19,6 +25,26 @@ public abstract class Inmueble {
 
     public void eliminarInmueble(){
 //
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getDescripcionInmueble() {
+        return descripcionInmueble;
+    }
+
+    public int getCodigoPostal() {
+        return codigoPostal;
+    }
+    
+    public int getIdMueble() {
+    return idMueble;        
+    }
+
+    public double getPrecioAlquiler() {
+        return precioAlquiler;
     }
 
 }

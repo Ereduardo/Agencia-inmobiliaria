@@ -28,9 +28,5 @@ public class Factura {
         return fecha;
     }
 
-    
-    
-
-
 }
 
