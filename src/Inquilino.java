@@ -1,6 +1,7 @@
 import java.util.Random;
-import java.util.Scanner;
 import java.util.Vector;
+
+
 
 public class Inquilino {
 
@@ -9,36 +10,30 @@ public class Inquilino {
     private String cedula;
     private int edad;
     private String sexo;
-    private int identificador = 1;
+    private int iD = 1;
 
     Random random = new Random(); //Para el metodo setIdentificador
 
     Inquilino(){ // Metodo constructor
         System.out.println("Ingrese el nombre del inquilino: ");
-        String aNombre = Main.escanear();
+        this.setNombre(Main.escanear());
         System.out.println("Ingrese la cedula: ");
-        String aCedula = Main.escanear();
+        this.setCedula(Main.escanear());
         System.out.println("Ingrese la edad: ");
-        int aEdad = Main.escanearInt();
+        this.setEdad(Main.escanearInt());      
         System.out.println("Ingrese el sexo del inquilino: ");
-        String aSexo = Main.escanear();
-        Inquilino.rellenarInquilino(this, aNombre, aCedula, aEdad, aSexo);
+        this.setSexo(Main.escanear());
+        this.iD = Main.nuevo_ID();
+        registrarInquilino(this);
     }
 
-    public static void rellenarInquilino(Inquilino cliente,String nombre, String cedula, int edad, String sexo){
-        //Inquilino cliente = new Inquilino();
-        cliente.setNombre(nombre);
-        cliente.setCedula(cedula);
-        cliente.setEdad(edad);
-        cliente.setSexo(sexo);
-        cliente.setIdentificador();
+    public static void registrarInquilino(Inquilino cliente){
         usuarios.addElement(cliente);
-        
         System.out.println("El cliente tiene como nombre: "+((Inquilino)usuarios.elementAt(usuarios.size()-1)).nombre);
         System.out.println("El cliente tiene como cedula: "+((Inquilino)usuarios.elementAt(usuarios.size()-1)).cedula);
         System.out.println("El cliente se define como: "+((Inquilino)usuarios.elementAt(usuarios.size()-1)).sexo);
         System.out.println("El cliente tiene la edad de "+((Inquilino)usuarios.elementAt(usuarios.size()-1)).edad+" años");
-        System.out.println("El cliente tiene como identificador: "+((Inquilino)usuarios.elementAt(usuarios.size()-1)).identificador);
+        System.out.println("El cliente tiene como identificador: "+((Inquilino)usuarios.elementAt(usuarios.size()-1)).iD);
     }
 
 
@@ -58,13 +53,6 @@ public class Inquilino {
         this.sexo = sexo;
     }
 
-    public void setIdentificador() {
-        int min = 111111;
-        int max = 999999;
-        
-        identificador = random.nextInt(max + min); //EL identificador es un codigo entre 111111 y 999999
-       
-    }
 
     public String getCedula() {
         return cedula;
@@ -75,7 +63,7 @@ public class Inquilino {
     }
 
     public int getIdentificador() {
-        return identificador;
+        return iD;
     }
 
     public String getSexo() {
