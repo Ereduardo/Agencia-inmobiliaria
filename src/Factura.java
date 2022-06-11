@@ -2,9 +2,10 @@ import java.util.Date;
 
 
 public class Factura {
+    
     private int telefono = 0; 
     private float agua = 0;
-    private float gas = 10;
+    private float gas = 0;
     private float electricidad = 0;
     private Date fecha = new Date();
 

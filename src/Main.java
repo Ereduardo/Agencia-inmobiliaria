@@ -3,6 +3,10 @@ import java.util.Random;
 
 
 /**
+ * 
+ * 
+ * 
+ * 
  * Links utilizados:
  * 
  * https://docs.oracle.com/javase/tutorial/essential/concurrency/sleep.html
@@ -27,14 +31,6 @@ public class Main {
         
         imprimirMenu();
         
-        
-        //getOpcion();
-        //Inquilino test = new Inquilino();
-        //Inmueble esova = new Inmueble();
-       // test = new Inquilino();
-       // MainFrame aFrame = new MainFrame();
-         // aFrame.inicializar(); 
-      
                 
     }
 
@@ -108,8 +104,7 @@ public class Main {
             //agregar menu de gestión de usuarios
             break;
             default: return;
-
-            
+        
         }
     }
 
@@ -132,20 +127,27 @@ public class Main {
             Inmueble.eliminarInmueble();
             main(null);
             break;
-            case 4: return;
-            default: return;
+            case 4: main(null);
+            break;
+            default: main(null);
         }
     } 
 
     private static void menu_consulta_inmuebles(){
         System.out.println("\nUsted ha escogido 'Consulta de Inmuebles' ");
         System.out.println("1: Buscar un inmueble");
-        System.out.println("2: ");
+        System.out.println("2: Ver todos los inmuebles registrados");
 
         switch(escanearInt()){
             case 1:
             Inmueble.mostrarInmueble();
             main(null);
+            break;
+            case 2:
+            Inmueble.mostrarTodosLosinmuebles();
+            main(null);
+            break;
+            default: main(null);   
         }
     }
 
