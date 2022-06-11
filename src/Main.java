@@ -28,7 +28,7 @@ public class Main {
 
     public static void main(String[] args){
         
-        
+    
         imprimirMenu();
         
                 
@@ -150,7 +150,9 @@ public class Main {
             default: main(null);   
         }
     }
-
+    public static void back_to_main(){
+        main(null);
+    }
 
 
     

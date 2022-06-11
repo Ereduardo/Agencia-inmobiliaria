@@ -1,33 +1,40 @@
-import java.util.Date;
+import java.util.Random;
 
 
 public class Factura {
-    
-    private int telefono = 0; 
+    private Inmueble inmueble; 
+    private float telefono = 0;// Telefono / Agua / Gas / Electricidad
     private float agua = 0;
     private float gas = 0;
     private float electricidad = 0;
-    private Date fecha = new Date();
+    private int mes; private int ano; // año
 
-    public int getTelefono() {
-        return telefono;
+
+
+    public void generarFactura(){
+        System.out.println("¿Cual es el ID de su inmueble?");
+        int id_hallar = Main.escanearInt();
+        for(int i = 0; i<Inmueble.inmuebles.size();i++){
+           
+                
+            
+        }
     }
 
-    public float getAgua() {
-        return agua;
+    public void mostrarFactura(int id){
+        System.out.println("El inmueble de ID: ("+id+") registrado con: ");
+        
     }
 
-    public float getGas() {
-        return gas;
-    }
+    public float generarCosto(){
+        float min = 25000;
+        float max = 400000;
+        float costo = new Random().nextFloat(max + min);
+        return costo;
+     }
 
-    public float getElectricidad() {
-        return electricidad;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
+     public void setInmueble(Inmueble inmueble) {
+         this.inmueble = inmueble;
+     }
 }
 
