@@ -28,7 +28,7 @@ public class Inquilino {
         System.out.println("El cliente tiene como nombre: "+cliente.getNombre());
         System.out.println("El cliente tiene como cedula: "+cliente.getCedula());
         System.out.println("El cliente se define como: "+cliente.getSexo());
-        System.out.println("El cliente tiene la edad de "+cliente.getEdad());
+        System.out.println("El cliente tiene la edad de "+cliente.getEdad()+" años");
         System.out.println("El cliente tiene como identificador: "+cliente.getIdentificador());
         Main.salto_espacio();
         Main.back_to_main();
@@ -60,6 +60,59 @@ public class Inquilino {
         }
                     return id_cliente;
     }
+
+    public static void modificarInquilino() {
+        
+        if(Main.usuarios.isEmpty()){
+                System.out.println("No se ha registrado a ningún cliente aún. ");
+                System.out.println("Regresando al menú principal...");
+                Main.salto_espacio();
+        }   else{
+            
+            System.out.println("Ingrese el número ID del cliente a modificar: ");
+            int id_hallar = Main.escanearInt();
+                for(int i=0;i<Main.usuarios.size();i++){
+                    if(id_hallar == ((Inquilino)Main.usuarios.elementAt(i)).iD){
+                        System.out.println("Datos del cliente con la respectiva ID: ");
+                        System.out.println("Nombre: "+((Inquilino)Main.usuarios.elementAt(i)).nombre);
+                        System.out.println("Cedula: "+((Inquilino)Main.usuarios.elementAt(i)).cedula);
+                        System.out.println("Edad: "+((Inquilino)Main.usuarios.elementAt(i)).edad+" años");
+                        System.out.println("Identificado como: "+((Inquilino)Main.usuarios.elementAt(i)).sexo);
+                        System.out.println("ID: "+((Inquilino)Main.usuarios.elementAt(i)).iD);
+                        System.out.println("¿Desea modificarlo?");
+                        System.out.println("Presione 1 para confirmar.");
+                        System.out.println("Presione 2 o más para regresar.");
+                        if(Main.escanearInt()==1){confirmModificarInquilino(i);}else{
+                            Main.back_to_main();
+                        }
+                    }
+                }
+            
+         
+            }
+            
+        }
+    
+    public static void confirmModificarInquilino(int i){
+        System.out.println("Está a punto de modificar todos los datos del usuario");
+            System.out.println("Ingrese el nuevo nombre del cliente: ");
+            ((Inquilino)Main.usuarios.elementAt(i)).nombre = Main.escanear();
+            System.out.println("Ingrese la nueva cédula: ");
+            ((Inquilino)Main.usuarios.elementAt(i)).cedula = Main.escanear();
+            System.out.println("Ingrese la nueva edad: ");
+            ((Inquilino)Main.usuarios.elementAt(i)).edad = Main.escanearInt();
+            System.out.println("Ingrese el nuevo sexo identificado: ");
+            ((Inquilino)Main.usuarios.elementAt(i)).sexo = Main.escanear();
+
+            System.out.println("Los nuevos datos que acabas de ingresar son: ");
+            System.out.println("Nombre: "+((Inquilino)Main.usuarios.elementAt(i)).nombre);
+            System.out.println("Cedula: "+((Inquilino)Main.usuarios.elementAt(i)).cedula);
+            System.out.println("Edad: "+((Inquilino)Main.usuarios.elementAt(i)).edad+" años");
+            System.out.println("Identificado como: "+((Inquilino)Main.usuarios.elementAt(i)).sexo);
+            System.out.println("ID: "+((Inquilino)Main.usuarios.elementAt(i)).iD);
+
+    }
+
 
     public static void renunciarInquilino(int id){
         System.out.println("\n¿Es esta la información del cliente a dar de baja?");
@@ -120,11 +173,5 @@ public class Inquilino {
         return nombre;
     }
 
-    public void modificarInquilino(){
-//
-    }
-    public void eliminarInquilino(){
-//
-    }
-
+   
 }

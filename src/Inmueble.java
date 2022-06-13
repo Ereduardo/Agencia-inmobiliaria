@@ -57,11 +57,11 @@ public class Inmueble {
                     System.out.println("Descripción: "+((Inmueble)Main.inmuebles.elementAt(i)).descripcionInmueble);
                     System.out.println("Codigo postal: "+((Inmueble)Main.inmuebles.elementAt(i)).codigoPostal);
                     System.out.println("Precio de alquiler: "+((Inmueble)Main.inmuebles.elementAt(i)).precioAlquiler);
-                    System.out.println("ID: "+((Inmueble)Main.inmuebles.elementAt(Main.inmuebles.size()-1)).iD_inmueble);
+                    System.out.println("ID: "+((Inmueble)Main.inmuebles.elementAt(i)).iD_inmueble);
                     System.out.println("¿Desea modificarlo?");
                     System.out.println("Presione 1 para confirmar.");
                     System.out.println("Presione 2 o más para regresar.");
-                    if(Main.escanearInt()==1){confirmModificarInmueble(id_hallar);}else{
+                    if(Main.escanearInt()==1){confirmModificarInmueble(i);}else{ // NO ES ID HALLAR 
                         Main.back_to_main();
                     }
                 }
