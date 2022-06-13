@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
-
+import java.util.Vector;
 
 /**
  * 
@@ -12,9 +12,8 @@ import java.util.Random;
  * https://docs.oracle.com/javase/tutorial/essential/concurrency/sleep.html
  * Metodo sleep para la pausa temporal
  * 
- * 
- * 
- * 
+ * https://es.acervolima.com/system-exit-en-java/
+ * Utilizado para System.exit(0) para salir del programa
  * 
  * 
  * 
@@ -25,6 +24,9 @@ import java.util.Random;
 
 public class Main {
     public static Scanner leer = new Scanner(System.in);
+    public static Vector inmuebles = new Vector(10,2);
+    public static Vector facturas = new Vector(10,2);
+    public static Vector usuarios = new Vector(10,2);
 
     public static void main(String[] args){
         
@@ -76,9 +78,7 @@ public class Main {
     }
 
     public static int nuevo_ID(){
-        int min = 11111;
-        int max = 99999;
-        int id = new Random().nextInt(max + min); //EL identificador es un codigo entre 111111 y 999999
+        int id = new Random().nextInt(99999); 
         return id;
     }
 
@@ -89,7 +89,6 @@ public class Main {
         System.out.println("1. Gestión de inmuebles");
         System.out.println("2. Consulta de Inmuebles");
         System.out.println("3. Gestión de Usuarios");
-        System.out.println("4. Consulta de Usuarios");
         System.out.println("5. Gestión de movimientos.");
         System.out.println("6. Consulta de movimientos y facturas");
         System.out.println("7. Salir");
@@ -101,9 +100,12 @@ public class Main {
             menu_consulta_inmuebles();
             break;
             case 3: 
-            //agregar menu de gestión de usuarios
+            menu_gestion_usuarios();
             break;
-            default: return;
+            case 7: System.exit(0);
+            break;
+            default: 
+            main(null);
         
         }
     }
@@ -116,7 +118,7 @@ public class Main {
         System.out.println("4 o +: Salir");
         switch(escanearInt()){
             case 1:
-            Inmueble.registrarInmueble();
+            Inmueble inmueble_Registrado = new Inmueble();
             main(null);
             break;
             case 2:
@@ -141,19 +143,38 @@ public class Main {
         switch(escanearInt()){
             case 1:
             Inmueble.mostrarInmueble();
-            main(null);
             break;
             case 2:
             Inmueble.mostrarTodosLosinmuebles();
-            main(null);
             break;
             default: main(null);   
         }
     }
+
+    public static void menu_gestion_usuarios(){
+        System.out.println("\nUsted ha escogido 'Gestión de usuarios' ");
+        System.out.println("1: Registrar un cliente.");
+        System.out.println("2: Buscar un cliente.");
+        System.out.println("3: Eliminar un cliente.");
+
+        switch (escanearInt()){
+            case 1:
+            Inquilino registrar = new Inquilino();
+            break;
+            case 2:
+            Inquilino.buscarInquilino();
+            main(null);
+            case 3:
+            Inquilino.renunciarInquilino(Inquilino.buscarInquilino());
+            default: main(null);
+        }
+    }
+
     public static void back_to_main(){
-        main(null);
+        imprimirMenu();
     }
 
 
     
+
 }
