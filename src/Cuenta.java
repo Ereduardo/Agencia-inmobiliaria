@@ -37,21 +37,24 @@ public static void abrirCuenta(){
 
     
 
+
+
 public void setCuenta(double cuenta) {
     this.cuenta = cuenta;
 }
+
+
 
 public void setId_cliente(int id_cliente) {
     this.id_cliente = id_cliente;
 }
 
-/* public void setId_nombre(int id_nombre) {
-    this.id_nombre = id_nombre;
-} */
 
 public void setNombre_cliente(String nombre_cliente) {
     this.nombre_cliente = nombre_cliente;
 }
+
+
 
 public String getNombre_cliente() {
     return nombre_cliente;

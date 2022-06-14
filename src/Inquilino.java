@@ -124,7 +124,7 @@ public class Inquilino {
     }
 
     public static int buscar_pos_id_inquilino(int id){
-        
+
         for(int i = 0; i <Main.usuarios.size();i++){
             if(id == ((Inquilino)Main.usuarios.elementAt(i)).iD){
                 return i;
@@ -133,6 +133,20 @@ public class Inquilino {
         return id;
     }
     
+    public static void verificar_inquilino(int id){
+        for(int i = 0; i <Main.usuarios.size();i++){
+            if(id == ((Inquilino)Main.usuarios.elementAt(i)).iD){
+                System.out.println("Cliente hallado, nombre: ");
+                System.out.println(((Inquilino)Main.usuarios.elementAt(i)).nombre);
+                Main.salto_espacio();
+                return;
+            }
+
+         }
+         System.out.println("Cliente no encontrado, regresando al menú.");
+         Main.salto_espacio();
+         Main.back_to_main();
+    }
 
     public void setCedula(String cedula) {
         this.cedula = cedula;

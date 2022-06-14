@@ -30,6 +30,8 @@ public class Main {
     public static Vector movimientos = new Vector(10,2);
     public static Vector cuentas = new Vector(10,2);
 
+    
+   
     public static void main(String[] args){
         imprimirMenu();
     }
@@ -44,10 +46,13 @@ public class Main {
         
     }
 
+    
     public static String escanear(){
         return leer.nextLine();
     }
 
+    
+   
     public static int escanearInt(){
         try{
         int numero = Integer.parseInt(leer.nextLine());
@@ -59,6 +64,8 @@ public class Main {
         }
     }
 
+    
+   
     public static Double escanearDouble(){
         try{
         double numero = Double.parseDouble(leer.nextLine());
@@ -70,6 +77,8 @@ public class Main {
             }
     }
 
+    
+   
     public static Float escanearFloat(){
         try{
         Float numero = Float.parseFloat(leer.nextLine());
@@ -81,14 +90,18 @@ public class Main {
             }
     }
 
+    
+    
     public static Boolean comparar_String(String a, String b) {
         Boolean validar = a.equalsIgnoreCase(b);
         return validar;
 
     }
 
+    
+    
     public static int nuevo_ID(){
-        int id = new Random().nextInt(99999); 
+        int id = (new Random().nextInt(99999)+1); 
         return id;
     }
 
@@ -99,7 +112,7 @@ public class Main {
         System.out.println("1. Gestión de inmuebles");
         System.out.println("2. Consulta de Inmuebles");
         System.out.println("3. Gestión de Usuarios");
-        System.out.println("4. Gestión de movimientos.");
+        System.out.println("4. Gestión de Facturas.");
         System.out.println("5. Consulta de movimientos y facturas");
         System.out.println("6. Gestión de cuentas.");
         System.out.println("7. Salir");
@@ -114,7 +127,7 @@ public class Main {
             menu_gestion_usuarios();
             break;
             case 4:
-            menu_Gestion_Movimientos();
+            menu_Gestion_Facturas();
             break;
             case 6:
             menu_Gestion_Cuentas();
@@ -200,8 +213,8 @@ public class Main {
         }
     }
 
-    public static void menu_Gestion_Movimientos(){
-        System.out.println("\nUsted ha escogido 'Gestión de movimientos' ");
+    public static void menu_Gestion_Facturas(){
+        System.out.println("\nUsted ha escogido 'Gestión de Facturas' ");
         System.out.println("1. Generar factura del inmueble");
         System.out.println("2. Buscar factura del inmueble");
         System.out.println("3. Aportar a la factura del inmueble");
@@ -220,7 +233,7 @@ public class Main {
             case 4: back_to_main();
             break;
             default:
-            menu_Gestion_Movimientos();
+            menu_Gestion_Facturas();
         }
 
     }
@@ -230,10 +243,14 @@ public class Main {
         System.out.println("1: Abrir cuenta para cliente.");
         System.out.println("2: Revisar saldo de cuenta.");
         System.out.println("3: Consignar saldo a cuenta.");
+        System.out.println("4: Regresar");
 
         switch(escanearInt()){
             case 1: Cuenta abrir = new Cuenta();
             menu_Gestion_Cuentas();
+            break;
+            case 4:
+            back_to_main();
             break;
             default:
             menu_Gestion_Cuentas();

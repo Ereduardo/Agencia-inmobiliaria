@@ -8,13 +8,12 @@ public class Inmueble {
     
     Inmueble(){
         registrarInmueble(this);
-        //Setter de los atributos
-        // Guardar cada inmueble en un objeto cada uno
-        // Getter para verlos
+        
     }
 
+    
+    
     public static void registrarInmueble(Inmueble inmueble_obj){
-       // Inmueble inmueble_obj = new Inmueble();
         System.out.println("Ingrese la dirección del inmueble: ");
         inmueble_obj.setDireccion(Main.escanear());
         System.out.println("Ingrese una breve descripción del inmueble: ");
@@ -23,12 +22,13 @@ public class Inmueble {
         inmueble_obj.setCodigoPostal(Main.escanearInt());
         System.out.println("Ingrese el precio para alquilar el inmueble (Ingrese solo la cifra en numeros): ");
         inmueble_obj.setPrecioAlquiler(Main.escanearDouble());
-
         Main.inmuebles.addElement(inmueble_obj);
         mostrarDatos(inmueble_obj);
     
     }
     
+    
+   
     public static void mostrarDatos(Inmueble inmueble_obj){
         System.out.println("Datos del inmueble registrado: ");
         System.out.println("Dirección: "+inmueble_obj.getDireccion());
@@ -41,7 +41,6 @@ public class Inmueble {
     }
 
     public static void modificarInmueble() {
-        
     if(Main.inmuebles.isEmpty()){
             System.out.println("No has registrado ningún inmueble aún. ");
             System.out.println("Regresando al menú principal...");
@@ -72,6 +71,8 @@ public class Inmueble {
         
     }
 
+    
+   
     public static void confirmModificarInmueble(int i){
                     System.out.println("Está a punto de modificar todos los datos del inmueble");
                     System.out.println("Ingrese la nueva dirección: ");
@@ -148,6 +149,8 @@ public class Inmueble {
 
     }
 
+    
+    
     public static void confirmEliminarInmueble(int i){
         System.out.println("Borrando...");
         Main.inmuebles.removeElementAt(i);
@@ -172,36 +175,66 @@ public class Inmueble {
             
     }
 
- 
+    
+    
+    public static void verificar_inmueble(int id){
+        for(int i=0;i<Main.inmuebles.size();i++){
+            if(id == ((Inmueble)Main.inmuebles.elementAt(i)).iD_inmueble){
+                System.out.println("Inmueble hallado, el de dirección: ");
+                System.out.println(((Inmueble)Main.inmuebles.elementAt(i)).iD_inmueble);
+                Main.salto_espacio();
+                return;
+            }
+        }
+        System.out.println("Inmueble no hallado, regresando al menú.");
+        Main.salto_espacio();
+        Main.back_to_main();
+    }
 
+    
+   
     public String getDireccion() {
         return direccion;
     }
 
+    
+  
     public String getDescripcionInmueble() {
         return descripcionInmueble;
     }
 
+    
+   
     public int getCodigoPostal() {
         return codigoPostal;
     }
+    
+   
     public int getiD_inmueble() {
         return iD_inmueble;
     }
 
+  
     public double getPrecioAlquiler() {
         return precioAlquiler;
     }
+    
+    
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    
+    
     public void setDescripcionInmueble(String descripcionInmueble) {
     this.descripcionInmueble = descripcionInmueble;
     }
+    
+    
     public void setCodigoPostal(int codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
     
+   
     public void setPrecioAlquiler(double precioAlquiler) {
         this.precioAlquiler = precioAlquiler;
     }

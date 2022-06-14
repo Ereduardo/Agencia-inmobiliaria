@@ -27,11 +27,14 @@ public class Factura {
         Factura factura = new Factura();
         System.out.println("¿Cual es el ID del cliente que está pagando?");
         int id_pagando = Main.escanearInt();
+        Inquilino.verificar_inquilino(id_pagando);
         System.out.println("¿Cual es el ID de su inmueble?");
         int id_hallar = Main.escanearInt();
+        Inmueble.verificar_inmueble(id_hallar);
         factura.verificar_factura_repetida(id_hallar);
         for(int i = 0; i<Main.inmuebles.size();i++){
             if(id_hallar ==((Inmueble)Main.inmuebles.elementAt(i)).iD_inmueble ){
+                factura.id_inquilino = id_pagando;
                 factura.id_inmueble = id_hallar;
                 System.out.println("El inmueble registrado con ID: " + id_hallar);
                 System.out.println("Tiene costos en su factura con conceptos de: ");
@@ -48,16 +51,19 @@ public class Factura {
         Main.back_to_main();
     }
 
+    
+    
     public static int mostrarFactura(){  
         if(Main.facturas.isEmpty() || Main.inmuebles.isEmpty()){
             System.out.println("No tiene ningún inmueble registrado o factura generada.");
             System.out.println("Por favor, registrar estos 2 primero.");
             Main.salto_espacio();
-            Main.menu_Gestion_Movimientos();
+            Main.menu_Gestion_Facturas();
         }
         
         System.out.println("¿Cual es el ID de su inmueble?");
         int id_hallar = Main.escanearInt();
+        Inquilino.verificar_inquilino(id_hallar);
         int pos_factura = buscar_pos_id_factura(id_hallar);
 
         if(pos_factura == id_hallar) {
@@ -81,7 +87,12 @@ public class Factura {
         
     
 
+    
+    
     public static void pagar_factura(int id){
+        System.out.println("¿Cual es la ID del cliente pagando?");
+        int id_pagando = Main.escanearInt();
+        Inquilino.verificar_inquilino(id_pagando);
         int pos_factura = buscar_pos_id_factura(id);
         System.out.println("¿En cual factura del inmueble va a aportar?");
         System.out.println("1 = Telefono | 2 = Agua | 3 = Gas | 4 = Electricidad");
@@ -141,10 +152,13 @@ public class Factura {
             pagar_factura(id); //Repetir si escoje un numero incorrecto
         }
         verificar_factura_pagada();
+        ((Factura)Main.facturas.elementAt(pos_factura)).id_inquilino = id_pagando;
         Main.salto_espacio();
         Main.back_to_main();
     }
 
+    
+   
     public static float verificar_pago(float pago, float factura){
         if(factura < pago){
             System.out.println("Ha aportado más de lo debido en la factura, se igualará el aporte a la factura.");
@@ -162,6 +176,8 @@ public class Factura {
         return factura;
     }
 
+    
+    
     public static int buscar_pos_id_factura(int id){
         for(int i = 0; i <Main.facturas.size();i++){
             if(id == ((Factura)Main.facturas.elementAt(i)).id_inmueble){
@@ -171,6 +187,8 @@ public class Factura {
         return id;
     }
 
+    
+    
     public void verificar_factura_repetida(int id){
         for(int i = 0; i<Main.facturas.size();i++){
         if(id == ((Factura)Main.facturas.elementAt(i)).id_inmueble){ 
@@ -199,7 +217,7 @@ public class Factura {
         float min = 25000;
         float max = 400000;
         float costo = new Random().nextFloat(max + min);
-        return costo;
+        return costo+1;
      }
 
 }
