@@ -1,7 +1,6 @@
 public class Cuenta {
     private double cuenta;
     private int id_cliente;
-    //private int id_nombre;
     private String nombre_cliente;
 
     Cuenta(){
@@ -11,31 +10,67 @@ public class Cuenta {
             Main.back_to_main();
         }
         
-        int pos_id = -1;
         System.out.println("Escriba el ID del cliente de la cuenta a abrir: ");
-        int id = Inquilino.buscar_pos_id_inquilino(Main.escanearInt());
-        if(id > Main.usuarios.size()){
-            System.out.println("No se ha encontrado ningún cliente con ese ID.");
-            Main.salto_espacio();
-            Main.back_to_main();
-        }else{
-            pos_id = id;
-        }
-
+        int id = Main.escanearInt();
+        Inquilino.verificar_inquilino(id);
+        int pos_id = Inquilino.buscar_pos_id_inquilino(id);
+        verificarCuentaRepetida(id);
         this.setNombre_cliente(((Inquilino)Main.usuarios.elementAt(pos_id)).getNombre());
         this.setId_cliente(((Inquilino)Main.usuarios.elementAt(pos_id)).getIdentificador());
         System.out.println("¿Cuanto va a consignar en su cuenta para empezar?");
-        this.setCuenta(Main.escanearDouble());
+        Double importe = Main.escanearDouble();
+        this.setCuenta(importe);
         Main.cuentas.addElement(this);
-
+        System.out.println("Su cuenta ha comenzado con: "+((Cuenta)Main.cuentas.elementAt(pos_id)).getCuenta()+" $");   
+        Main.salto_espacio(); 
+        Movimiento.identificarGanancia(pos_id, importe);
+    
     }
 
-public static void abrirCuenta(){
-    
+public static void consignarCuenta(){
+    System.out.println("¿Cual es el ID del cliente dueño de la cuenta?");
+    int id = Main.escanearInt();
+    int pos_id = verificarCuenta(id);
+    System.out.println("¿Cuanto va a consignar a la cuenta?");
+    Double importe = Main.escanearDouble();
+    ((Cuenta)Main.cuentas.elementAt(pos_id)).setCuenta((((Cuenta)Main.cuentas.elementAt(pos_id)).getCuenta()+importe));
+    Main.salto_espacio();
+    System.out.println("La cuenta actualmente tiene: "+((Cuenta)Main.cuentas.elementAt(pos_id)).getCuenta());    
+    Movimiento.identificarGanancia(pos_id, importe);
+    Main.salto_espacio();
+    Main.back_to_main();
 
 }
 
-    
+public static void verificarCuentaRepetida(int id){
+    for(int i = 0; i<Main.cuentas.size();i++){
+        if(id == ((Cuenta)Main.cuentas.elementAt(i)).id_cliente){
+            System.out.println("Cuenta hallada, no hace falta volverla a abrir.");
+            System.out.println("Nombre del dueño: ");
+            System.out.println(((Cuenta)Main.cuentas.elementAt(i)).nombre_cliente);
+            System.out.println("Saldo actual: ");
+            System.out.println(((Cuenta)Main.cuentas.elementAt(i)).getCuenta());
+            System.out.println("\nRegresando al menú...");
+            Main.salto_espacio();
+            Main.back_to_main();
+        }
+    }
+}
+
+public static int verificarCuenta(int id){
+    for(int i = 0; i<Main.cuentas.size();i++){
+        if(id == ((Cuenta)Main.cuentas.elementAt(i)).id_cliente){
+            System.out.println("Cuenta hallada, nombre del dueño: ");
+            System.out.println(((Cuenta)Main.cuentas.elementAt(i)).nombre_cliente);
+            Main.salto_espacio();
+            return i;
+        }
+    }
+    System.out.println("Cuenta no encontrada, regresando al menú.");
+    Main.salto_espacio();
+    Main.back_to_main();
+    return 0;
+}
 
 
 
@@ -54,10 +89,13 @@ public void setNombre_cliente(String nombre_cliente) {
     this.nombre_cliente = nombre_cliente;
 }
 
-
+public double getCuenta() {
+    return cuenta;
+}
 
 public String getNombre_cliente() {
     return nombre_cliente;
 }
+
 
 }

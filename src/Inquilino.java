@@ -137,7 +137,7 @@ public class Inquilino {
         for(int i = 0; i <Main.usuarios.size();i++){
             if(id == ((Inquilino)Main.usuarios.elementAt(i)).iD){
                 System.out.println("Cliente hallado, nombre: ");
-                System.out.println(((Inquilino)Main.usuarios.elementAt(i)).nombre);
+                System.out.println(((Inquilino)Main.usuarios.elementAt(i)).getNombre());
                 Main.salto_espacio();
                 return;
             }

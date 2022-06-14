@@ -21,13 +21,14 @@ public class Movimiento {
 
     
    
-    public static void identificarGanancia(int pos_inqui, float importe){
+    public static void identificarGanancia(int pos_inqui, Double importe){
         Movimiento ganancia = new Movimiento();
         ganancia.setTipoMovimiento(true);
         ganancia.setId_inmueble(0);
         ganancia.setId_inquilino(((Inquilino)Main.usuarios.elementAt(pos_inqui)).getIdentificador());
         ganancia.setNombre_inquilino(((Inquilino)Main.usuarios.elementAt(pos_inqui)).getNombre());
-        ganancia.setImporte(importe);
+        float importe_float = importe.floatValue();
+        ganancia.setImporte(importe_float);
         Main.movimientos.addElement(ganancia);
 
     }

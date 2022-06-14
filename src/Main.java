@@ -249,6 +249,10 @@ public class Main {
             case 1: Cuenta abrir = new Cuenta();
             menu_Gestion_Cuentas();
             break;
+            case 3:
+            Cuenta.consignarCuenta();
+            menu_Gestion_Cuentas();
+            break;
             case 4:
             back_to_main();
             break;
