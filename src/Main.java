@@ -113,7 +113,7 @@ public class Main {
         System.out.println("2. Consulta de Inmuebles");
         System.out.println("3. Gestión de Usuarios");
         System.out.println("4. Gestión de Facturas.");
-        System.out.println("5. Consulta de movimientos y facturas");
+        System.out.println("5. Consulta de movimientos");
         System.out.println("6. Gestión de cuentas.");
         System.out.println("7. Salir");
         switch(escanearInt()){
@@ -129,6 +129,8 @@ public class Main {
             case 4:
             menu_Gestion_Facturas();
             break;
+            case 5:
+            menu_Consulta_movimientos();
             case 6:
             menu_Gestion_Cuentas();
             break;
@@ -249,6 +251,10 @@ public class Main {
             case 1: Cuenta abrir = new Cuenta();
             menu_Gestion_Cuentas();
             break;
+            case 2:
+            Cuenta.mostrarSaldoCuenta();
+            menu_Gestion_Cuentas();
+            break;
             case 3:
             Cuenta.consignarCuenta();
             menu_Gestion_Cuentas();
@@ -258,6 +264,35 @@ public class Main {
             break;
             default:
             menu_Gestion_Cuentas();
+        }
+
+    }
+
+    public static void menu_Consulta_movimientos(){
+        System.out.println("\nUsted ha escogido 'Consulta de movimientos' ");
+        System.out.println("1: Consultar todos los movimientos de un cliente.");
+        System.out.println("2: Consultar todos los gastos de un cliente.");
+        System.out.println("3: Consultar todas las ganancias de un cliente.");
+        System.out.println("4: Regresar.");
+
+        switch(escanearInt()){
+            case 1:
+            Movimiento.buscarMovimiento();
+            menu_Consulta_movimientos();
+            break;
+            case 2:
+            Movimiento.buscarGastos();
+            menu_Consulta_movimientos();
+            break;
+            case 3:
+            Movimiento.buscarGanancias();
+            menu_Consulta_movimientos();
+            break;
+            case 4:
+            back_to_main();
+            break;
+            default:
+            menu_Consulta_movimientos();
         }
 
     }

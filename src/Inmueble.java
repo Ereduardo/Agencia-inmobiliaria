@@ -4,7 +4,7 @@ public class Inmueble {
     protected int codigoPostal;
     protected double precioAlquiler;
     protected int iD_inmueble = Main.nuevo_ID();
-   
+    protected int id_cliente;
     
     Inmueble(){
         registrarInmueble(this);
@@ -181,7 +181,7 @@ public class Inmueble {
         for(int i=0;i<Main.inmuebles.size();i++){
             if(id == ((Inmueble)Main.inmuebles.elementAt(i)).iD_inmueble){
                 System.out.println("Inmueble hallado, el de dirección: ");
-                System.out.println(((Inmueble)Main.inmuebles.elementAt(i)).iD_inmueble);
+                System.out.println(((Inmueble)Main.inmuebles.elementAt(i)).direccion);
                 Main.salto_espacio();
                 return;
             }
@@ -189,6 +189,15 @@ public class Inmueble {
         System.out.println("Inmueble no hallado, regresando al menú.");
         Main.salto_espacio();
         Main.back_to_main();
+    }
+
+    public static int buscar_pos_id_inmueble(int id){
+        for(int i = 0;i<Main.inmuebles.size();i++){
+            if(id == ((Inmueble)Main.inmuebles.elementAt(i)).iD_inmueble){
+                return i;
+            }
+        }
+        return id;
     }
 
     

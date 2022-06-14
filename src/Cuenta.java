@@ -63,13 +63,22 @@ public static int verificarCuenta(int id){
             System.out.println("Cuenta hallada, nombre del dueño: ");
             System.out.println(((Cuenta)Main.cuentas.elementAt(i)).nombre_cliente);
             Main.salto_espacio();
-            return i;
+            return i; // Retorna la posicion
         }
     }
     System.out.println("Cuenta no encontrada, regresando al menú.");
     Main.salto_espacio();
     Main.back_to_main();
     return 0;
+}
+
+public static void mostrarSaldoCuenta(){
+    System.out.println("Ingresar el ID del dueño de la cuenta.");
+    int pos_id_cliente = verificarCuenta(Main.escanearInt());
+    System.out.println("El saldo del cliente: "+((Cuenta)Main.cuentas.elementAt(pos_id_cliente)).nombre_cliente);
+    System.out.println("Contiene la suma de: "+((Cuenta)Main.cuentas.elementAt(pos_id_cliente)).cuenta+" $");
+    Main.salto_espacio();
+    Main.back_to_main();
 }
 
 
