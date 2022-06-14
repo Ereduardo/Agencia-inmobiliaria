@@ -1,10 +1,12 @@
 public class Alquiler {
-    private Alquiler alquiler;
+    private int inquilino_id;
+    private int inmueble_id;
+    private int alquiler_id;
     
 
-    public void alquilar(Inmueble inmueble,Inquilino inquilino,Factura factura){
-//          
-    }
+
+
+
 
     
 

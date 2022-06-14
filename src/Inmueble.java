@@ -116,7 +116,7 @@ public class Inmueble {
                 }
             }
         }
-        Main.back_to_main();
+        
     }
 
     public static void eliminarInmueble(){
@@ -169,7 +169,7 @@ public class Inmueble {
                     System.out.println("Precio de alquiler: "+((Inmueble)Main.inmuebles.elementAt(i)).precioAlquiler);
                     Main.salto_espacio();
             }
-            Main.back_to_main();
+            
     }
 
  

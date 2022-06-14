@@ -1,8 +1,5 @@
-
-
 public class Inquilino {
 
-    //private static Vector usuarios = new Vector(10,5);
     private String nombre;
     private String cedula;
     private int edad;
@@ -53,7 +50,7 @@ public class Inquilino {
                 System.out.println("Datos del respectivo cliente: ");
                 System.out.println("Nombre: "+((Inquilino)Main.usuarios.elementAt(pos_cliente)).nombre);
                 System.out.println("Cedula: "+((Inquilino)Main.usuarios.elementAt(pos_cliente)).cedula);
-                System.out.println("Edad: "+((Inquilino)Main.usuarios.elementAt(pos_cliente)).edad);
+                System.out.println("Edad: "+((Inquilino)Main.usuarios.elementAt(pos_cliente)).edad+" años");
                 System.out.println("Sexo: "+((Inquilino)Main.usuarios.elementAt(pos_cliente)).sexo);
                 System.out.println("Identificador: "+((Inquilino)Main.usuarios.elementAt(pos_cliente)).iD);
                 Main.salto_espacio();   
@@ -127,6 +124,7 @@ public class Inquilino {
     }
 
     public static int buscar_pos_id_inquilino(int id){
+        
         for(int i = 0; i <Main.usuarios.size();i++){
             if(id == ((Inquilino)Main.usuarios.elementAt(i)).iD){
                 return i;

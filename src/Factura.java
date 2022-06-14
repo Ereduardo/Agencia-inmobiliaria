@@ -1,13 +1,13 @@
 import java.util.Random;
 
-
 public class Factura {
    
     private float telefono = generarCosto();// Telefono / Agua / Gas / Electricidad
     private float agua = generarCosto();
     private float gas = generarCosto();
     private float electricidad = generarCosto();
-    private int id_facturando;
+    private int id_inmueble;
+    private int id_inquilino;
 
 
 
@@ -18,13 +18,21 @@ public class Factura {
             Main.back_to_main();
         }
 
+        if(Main.usuarios.isEmpty()){
+            System.out.println("No tiene clientes registrados, registrarlos primero.");
+            Main.salto_espacio();
+            Main.back_to_main();
+        }
+
         Factura factura = new Factura();
+        System.out.println("¿Cual es el ID del cliente que está pagando?");
+        int id_pagando = Main.escanearInt();
         System.out.println("¿Cual es el ID de su inmueble?");
         int id_hallar = Main.escanearInt();
         factura.verificar_factura_repetida(id_hallar);
         for(int i = 0; i<Main.inmuebles.size();i++){
             if(id_hallar ==((Inmueble)Main.inmuebles.elementAt(i)).iD_inmueble ){
-                factura.id_facturando = id_hallar;
+                factura.id_inmueble = id_hallar;
                 System.out.println("El inmueble registrado con ID: " + id_hallar);
                 System.out.println("Tiene costos en su factura con conceptos de: ");
                 System.out.println("Telefono: " + factura.telefono);
@@ -45,7 +53,7 @@ public class Factura {
             System.out.println("No tiene ningún inmueble registrado o factura generada.");
             System.out.println("Por favor, registrar estos 2 primero.");
             Main.salto_espacio();
-            Main.back_to_main();
+            Main.menu_Gestion_Movimientos();
         }
         
         System.out.println("¿Cual es el ID de su inmueble?");
@@ -78,6 +86,7 @@ public class Factura {
         System.out.println("¿En cual factura del inmueble va a aportar?");
         System.out.println("1 = Telefono | 2 = Agua | 3 = Gas | 4 = Electricidad");
         switch(Main.escanearInt()){
+            // PAGO DE FACTURA DE TELEFONO INICIO
             case 1: 
             if(((Factura)Main.facturas.elementAt(pos_factura)).telefono == 0){
                 System.out.println("Usted está a paz y salvo con la factura del telefono.");
@@ -88,6 +97,9 @@ public class Factura {
             ((Factura)Main.facturas.elementAt(pos_factura)).telefono = verificar_pago(Main.escanearFloat(),((Factura)Main.facturas.elementAt(pos_factura)).telefono);
             System.out.println("La factura de telefono ha quedado en: "+((Factura)Main.facturas.elementAt(pos_factura)).telefono+" peso(s). ");
             break;
+            //PAGO DE FACTURA DE TELEFONO FINAL
+            
+             //PAGO DE FACTURA DE AGUA INICIO
             case 2:
             if(((Factura)Main.facturas.elementAt(pos_factura)).agua == 0){
                 System.out.println("Usted está a paz y salvo con la factura del agua.");
@@ -98,6 +110,9 @@ public class Factura {
             ((Factura)Main.facturas.elementAt(pos_factura)).agua = verificar_pago(Main.escanearFloat(),((Factura)Main.facturas.elementAt(pos_factura)).agua);
             System.out.println("La factura de agua ha quedado en: "+((Factura)Main.facturas.elementAt(pos_factura)).agua+" peso(s). ");
             break;
+             //PAGO DE FACTURA DE AGUA FINAL
+
+             //PAGO DE FACTURA DE GAS INICIO
             case 3:
             if(((Factura)Main.facturas.elementAt(pos_factura)).gas == 0){
                 System.out.println("Usted está a paz y salvo con la factura del gas.");
@@ -106,8 +121,11 @@ public class Factura {
             }
             System.out.println("¿De cuanto será su aporte?");
             ((Factura)Main.facturas.elementAt(pos_factura)).gas = verificar_pago(Main.escanearFloat(),((Factura)Main.facturas.elementAt(pos_factura)).gas);
-            System.out.println("La factura de agua ha quedado en: "+((Factura)Main.facturas.elementAt(pos_factura)).agua+" peso(s). ");
+            System.out.println("La factura de gas ha quedado en: "+((Factura)Main.facturas.elementAt(pos_factura)).gas+" peso(s). ");
             break;
+            //PAGO DE FACTURA DE GAS FINAL
+
+            //PAGO DE FACTURA DE ELECTRICIDAD INICIO
             case 4:
             if(((Factura)Main.facturas.elementAt(pos_factura)).electricidad == 0){
                 System.out.println("Usted está a paz y salvo con la factura de eectricidad.");
@@ -118,9 +136,11 @@ public class Factura {
             ((Factura)Main.facturas.elementAt(pos_factura)).electricidad = verificar_pago(Main.escanearFloat(),((Factura)Main.facturas.elementAt(pos_factura)).electricidad);
             System.out.println("La factura de electricidad ha quedado en: "+((Factura)Main.facturas.elementAt(pos_factura)).electricidad+" peso(s). ");
             break;
+            //PAGO DE FACTURA DE ELECTRICIDAD FINAL
             default:
-            pagar_factura(id);
+            pagar_factura(id); //Repetir si escoje un numero incorrecto
         }
+        verificar_factura_pagada();
         Main.salto_espacio();
         Main.back_to_main();
     }
@@ -144,7 +164,7 @@ public class Factura {
 
     public static int buscar_pos_id_factura(int id){
         for(int i = 0; i <Main.facturas.size();i++){
-            if(id == ((Factura)Main.facturas.elementAt(i)).id_facturando){
+            if(id == ((Factura)Main.facturas.elementAt(i)).id_inmueble){
                 return i;
             }
         }
@@ -153,7 +173,7 @@ public class Factura {
 
     public void verificar_factura_repetida(int id){
         for(int i = 0; i<Main.facturas.size();i++){
-        if(id == ((Factura)Main.facturas.elementAt(i)).id_facturando){ 
+        if(id == ((Factura)Main.facturas.elementAt(i)).id_inmueble){ 
             System.out.println("Usted ya tiene su factura, busquela en su respectiva opción.");
             Main.salto_espacio();
             Main.back_to_main();
@@ -161,12 +181,16 @@ public class Factura {
         }
     }
 
-    public void verificar_factura_pagada(){
+    public static void verificar_factura_pagada(){
         float cobro_total = 1;
         for(int i = 0; i <Main.facturas.size();i++){
             cobro_total = (((Factura)Main.facturas.elementAt(i)).agua+((Factura)Main.facturas.elementAt(i)).gas+((Factura)Main.facturas.elementAt(i)).electricidad+((Factura)Main.facturas.elementAt(i)).telefono);
             if(cobro_total==0){
                 Main.facturas.removeElementAt(i);
+                System.out.println("La factura del inmueble de ID: "+((Factura)Main.facturas.elementAt(i)).id_inmueble);
+                System.out.println("ha terminado de ser pagada, está a paz y salvo por este mes.");
+                Main.salto_espacio();
+                Main.back_to_main();
             }
         }
     }
