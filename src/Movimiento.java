@@ -43,8 +43,7 @@ public class Movimiento {
         ganancia.setId_inmueble(0);//No necesitamos del inmueble en las ganancias
         ganancia.setId_inquilino(((Inquilino)Main.usuarios.elementAt(pos_inqui)).getIdentificador());
         ganancia.setNombre_inquilino(((Inquilino)Main.usuarios.elementAt(pos_inqui)).getNombre());
-        float importe_float = importe.floatValue();
-        ganancia.setImporte(importe_float);
+        ganancia.setImporte(importe.floatValue());
         Main.movimientos.addElement(ganancia);
 
     }
@@ -96,14 +95,7 @@ public class Movimiento {
         Main.back_to_main();
     }
 
-  /*   public static int buscar_pos_id_movimiento(int id){
-        for(int i = 0; i<Main.movimientos.size(); i++){
-            if(id == ((Movimiento)Main.movimientos.elementAt(i)).getId_inquilino()){
-                return i;
-            }
-        }
-        return id;
-    } */
+  
   
     public void setId_inmueble(int id_inmueble) {
         this.id_inmueble = id_inmueble;

@@ -4,7 +4,7 @@ public class Inmueble {
     protected int codigoPostal;
     protected double precioAlquiler;
     protected int iD_inmueble = Main.nuevo_ID();
-    protected int id_cliente;
+    protected int id_cliente = 0;
     
     Inmueble(){
         registrarInmueble(this);

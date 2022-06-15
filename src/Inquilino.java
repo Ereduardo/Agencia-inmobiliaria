@@ -1,4 +1,6 @@
-public class Inquilino {
+import java.io.Serializable;
+
+public class Inquilino implements Serializable{ 
 
     private String nombre;
     private String cedula;

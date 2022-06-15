@@ -29,11 +29,14 @@ public class Main {
     public static Vector usuarios = new Vector(10,  2);
     public static Vector movimientos = new Vector(10,2);
     public static Vector cuentas = new Vector(10,2);
+    public static Vector alquileres = new Vector(10,2);
 
     
    
     public static void main(String[] args){
+
         imprimirMenu();
+
     }
 
     public static void salto_espacio(){
@@ -112,10 +115,11 @@ public class Main {
         System.out.println("1. Gestión de inmuebles");
         System.out.println("2. Consulta de Inmuebles");
         System.out.println("3. Gestión de Usuarios");
-        System.out.println("4. Gestión de Facturas.");
+        System.out.println("4. Gestión de Facturas");
         System.out.println("5. Consulta de movimientos");
-        System.out.println("6. Gestión de cuentas.");
-        System.out.println("7. Salir");
+        System.out.println("6. Gestión de cuentas");
+        System.out.println("7. Gestión de alquiler");
+        System.out.println("8. Salir");
         switch(escanearInt()){
             case 1:
             menu_Inmuebles();
@@ -131,10 +135,14 @@ public class Main {
             break;
             case 5:
             menu_Consulta_movimientos();
+            break;
             case 6:
             menu_Gestion_Cuentas();
             break;
-            case 7: System.exit(0);
+            case 7:
+            menu_gestion_alquiler();
+            break;
+            case 8: System.exit(0);
             break;
             default: 
             imprimirMenu();
@@ -192,9 +200,9 @@ public class Main {
 
     public static void menu_gestion_usuarios(){
         System.out.println("\nUsted ha escogido 'Gestión de usuarios' ");
-        System.out.println("1: Registrar un cliente.");
-        System.out.println("2: Buscar un cliente.");
-        System.out.println("3: Eliminar un cliente.");
+        System.out.println("1: Registrar un cliente");
+        System.out.println("2: Buscar un cliente");
+        System.out.println("3: Eliminar un cliente");
         System.out.println("4: Regresar");
 
         switch (escanearInt()){
@@ -295,6 +303,32 @@ public class Main {
             menu_Consulta_movimientos();
         }
 
+    }
+
+    public static void menu_gestion_alquiler(){
+        System.out.println("\nUsted ha escogido 'Gestión de alquiler' ");
+        System.out.println("1. Alquilar un inmueble.");
+        System.out.println("2. Verifica alquiler de un inmueble.");
+        System.out.println("3. Mostrar todos los alquileres de un cliente. ");
+        System.out.println("4. Regresar");
+        switch(escanearInt()){
+            case 1:
+            Alquiler registrar = new Alquiler();
+            menu_gestion_alquiler();
+            break;
+            case 2: 
+            Alquiler.mostrarAlquiler_inmueble();
+            menu_gestion_alquiler();
+            break;
+            case 3:
+            Alquiler.mostrarAlquileres_inquilino();
+            menu_gestion_alquiler();
+            break;
+            case 4: back_to_main();
+            break;
+            default:
+            menu_gestion_alquiler();
+        }
     }
 
     public static void back_to_main(){
