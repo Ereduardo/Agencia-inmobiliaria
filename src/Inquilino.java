@@ -1,4 +1,8 @@
-
+/********
+ * La clase inquilino, inquilino es aquél cliente que puede alquilar inmuebles pagando el precio
+ * abrir cuenta bancaria en la agencia inmobliaria, pagar facturas
+ * es la base del proyecto junto al Inmueble
+ */
 
 public class Inquilino {
 
@@ -8,8 +12,10 @@ public class Inquilino {
     private String sexo;
     private int iD = 1;
 
-
-    Inquilino() { // Metodo constructor
+    /**
+     * Metodo constuctor para la clase Inquilino
+     */
+    Inquilino() { 
         System.out.println("Ingrese el nombre del cliente: ");
         this.setNombre(Main.escanear());
         System.out.println("Ingrese la cedula: ");
@@ -22,6 +28,11 @@ public class Inquilino {
         registrarInquilino(this);
     }
 
+    
+    /** 
+     * Metodo para registrar inquilino en el vector de Inquilinos
+     * @param cliente Objeto cliente a guardar en el vector
+     */
     private void registrarInquilino(Inquilino cliente) {
         Main.usuarios.addElement(cliente);
         System.out.println("El cliente tiene como nombre: " + cliente.getNombre());
@@ -33,6 +44,11 @@ public class Inquilino {
         Main.back_to_main();
     }
 
+    
+    /** 
+     * Metodo para buscar inquilino en el vector de Usuarios
+     * @return int ID del cliente
+     */
     public static int buscarInquilino() {
         if (Main.usuarios.isEmpty()) {
             System.out.println("No se ha registrado ningún cliente. ");
@@ -59,7 +75,9 @@ public class Inquilino {
         }
         return id_cliente;
     }
-
+    /*******
+     * Metodo para modificar inquilino con el ID del inmueble
+     */
     public static void modificarInquilino() {
 
         if (Main.usuarios.isEmpty()) {
@@ -94,6 +112,11 @@ public class Inquilino {
 
     }
 
+    
+    /** 
+     * Metodo para confirmar la modificación del inquilino
+     * @param i Posición del inquiino en el vector
+     */
     public static void confirmModificarInquilino(int i) {
         System.out.println("Está a punto de modificar todos los datos del usuario");
         System.out.println("Ingrese el nuevo nombre del cliente: ");
@@ -115,6 +138,11 @@ public class Inquilino {
     }
 
 
+    
+    /** 
+     * Metodo para eliminar inquilino del vector de Usuarios
+     * @param id id del inquilino
+     */
     public static void renunciarInquilino(int id) {
         System.out.println("\n¿Es esta la información del cliente a dar de baja?");
         System.out.println("Escribe 1 de confirmar, 2 o + para regresar al menú. ");
@@ -128,6 +156,12 @@ public class Inquilino {
         }
     }
 
+    
+    /** 
+     * Metodo para buscar la posición de un inquilino en el vector
+     * @param id ID del inquilino
+     * @return Si lo encuentra en el vector, retorna posición, sino, ID
+     */
     public static int buscar_pos_id_inquilino(int id) {
 
         for (int i = 0; i < Main.usuarios.size(); i++) {
@@ -138,6 +172,12 @@ public class Inquilino {
         return id;
     }
 
+    
+    /** 
+     * Metodo para verificar si inquilino se encuentra en el vector
+     * @param id ID del inquilino
+     * @return Retorna al main si no lo encuentra
+     */
     public static void verificar_inquilino(int id) {
         for (int i = 0; i < Main.usuarios.size(); i++) {
             if (id == ((Inquilino) Main.usuarios.elementAt(i)).iD) {
@@ -153,39 +193,75 @@ public class Inquilino {
         Main.back_to_main();
     }
 
+    
+    /** 
+     * @param cedula
+     */
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
+    
+    /** 
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    
+    /** 
+     * @param edad
+     */
     public void setEdad(int edad) {
         this.edad = edad;
     }
 
+    
+    /** 
+     * @param sexo
+     */
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
 
+    
+    /** 
+     * @return String
+     */
     public String getCedula() {
         return cedula;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getEdad() {
         return edad;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getIdentificador() {
         return iD;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getSexo() {
         return sexo;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getNombre() {
         return nombre;
     }

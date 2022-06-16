@@ -1,9 +1,19 @@
+/**********
+ * El Alquiler guarda una lista de datos de los clientes que alquilan inmuebles
+ * en el respectivo vector de Alquileres inicializado en el Main
+ * 
+ */
+
 public class Alquiler {
     private int inquilino_id;
     private int inmueble_id;
     private String nombre_inquilino;
     private String direccion_inmueble;
 
+    /***********
+     * Constructor para el objeto Alquiler, utilizado para guardar con facilidad los atributos de la clase Alquiler.
+     * 
+     */
     Alquiler() {
         System.out.println("Ingrese el ID del inmueble: ");
         int id_inmueble = Main.escanearInt();
@@ -27,6 +37,11 @@ public class Alquiler {
 
     }
 
+    
+    /** 
+     * Verifica si el inmueble ya está en un alquiler, es deicir, repetido, en caso de que sea true, retorna al Main.
+     * @param id_inmueble id del inmueble
+     */
     public static void verificarAlquilerRepetido(int id_inmueble) {
         for (int i = 0; i < Main.alquileres.size(); i++) {
             if (id_inmueble == ((Alquiler) Main.alquileres.elementAt(i)).getInmueble_id()) {
@@ -38,6 +53,13 @@ public class Alquiler {
 
     }
 
+    
+    /** 
+     * Cobra el precio del alquiler a la cuenta bancaria del cliente, y genera un movimiento (Gasto) a registrar.
+     * Le da un nuevo dueño de inmueble al cliente que confirme pago de alquiler.
+     * @param id_cliente ID del cliente
+     * @param id_inmueble ID del inmueble
+     */
     public static void pagarAlquiler(int id_cliente, int id_inmueble) {
         System.out.println("En caso de que el cliente no tenga una cuenta abierta con la cual pagar alquiler");
         System.out.println("el sistema lo retornará automaticamente al menú.");
@@ -64,7 +86,9 @@ public class Alquiler {
         Movimiento.identificarGasto(pos_inmueble, pos_inquilino, precio_alquiler.floatValue());
 
     }
-
+    /*********
+     * Mostrar el alquiler de un inmueble, si es que está alquilado, de no estarlo, retorna al Main.
+     */
     public static void mostrarAlquiler_inmueble() {
         System.out.println("Ingrese el ID del inmueble para verificar su alquiler.");
         int id_inmueble = Main.escanearInt();
@@ -81,7 +105,9 @@ public class Alquiler {
         }
 
     }
-
+    /********
+     * Mostrar todos los alquileres que tiene un inquilino, de no tener ninguno, retorna al Main.
+     */
     public static void mostrarAlquileres_inquilino() {
         System.out.println("Ingrese el ID del cliente a ver sus alquileres.");
         int id_inquilino = Main.escanearInt();
@@ -100,6 +126,11 @@ public class Alquiler {
 
     }
 
+    
+    /** 
+     * Verifica si el inmueble se encuentra en el vector de alquileres, de ser False, retorna al main, de ser True, retorno vacío.
+     * @param id_inmueble ID del inmueble
+     */
     public static void verificarAlquiler_inmueble(int id_inmueble) {
         for (int i = 0; i < Main.alquileres.size(); i++) {
             if (id_inmueble == ((Alquiler) Main.alquileres.elementAt(i)).inmueble_id) {
@@ -108,8 +139,14 @@ public class Alquiler {
         }
         System.out.println("No se ha encontrado este inmueble en la lista de alquileres.");
         Main.salto_espacio();
+        Main.back_to_main();
     }
 
+    
+    /** 
+     * Verifica si el inquilino se encuentra en el vector de alquileres, de ser False, retorna al Main, de ser True, retorna al vacío
+     * @param id_inquilino ID del inquilino
+     */
     public static void verificarAlquiler_inquilino(int id_inquilino) {
         for (int i = 0; i < Main.alquileres.size(); i++) {
             if (id_inquilino == ((Alquiler) Main.alquileres.elementAt(i)).inquilino_id) {
@@ -121,7 +158,9 @@ public class Alquiler {
         Main.back_to_main();
     }
 
-
+    /********
+     * Elimina un elemento del vector alquileres, dando el ID del inquilino y el inmueble a desalquilar
+     */
     public static void desalquilar() {
         System.out.println("Ingrese el ID del alquilador.");
         int id_alquilador = Main.escanearInt();
@@ -145,6 +184,12 @@ public class Alquiler {
         Main.salto_espacio();
     }
 
+    
+    /** 
+     * Elimina el elemento del vector Alquiler
+     * @param pos_alquiler posición en el vector Alquiler
+     * @param id_inmueble ID del inmueble
+     */
     public static void eliminarAlquiler(int pos_alquiler, int id_inmueble) {
 
         int pos_inmueble = Inmueble.buscar_pos_id_inmueble(id_inmueble);
@@ -156,35 +201,75 @@ public class Alquiler {
 
     }
 
+    
+    /** 
+     * Metodo Get para el ID del inquilino
+     * @return ID del inquilino
+     */
     public int getInquilino_id() {
         return inquilino_id;
     }
 
+    
+    /** 
+     * Metodo Get para el ID del inmueble
+     * @return ID del inmueble
+     */
     public int getInmueble_id() {
         return inmueble_id;
     }
 
 
+    
+    /** 
+     * Metodo Set para el ID del inmueble 
+     * @param inmueble_id ID del inmueble
+     */
     public void setInmueble_id(int inmueble_id) {
         this.inmueble_id = inmueble_id;
     }
 
+    
+    /** 
+     * Metodo Set para el ID del inquilino
+     * @param inquilino_id
+     */
     public void setInquilino_id(int inquilino_id) {
         this.inquilino_id = inquilino_id;
     }
 
+    
+    /** 
+     * Metodo Set para el nombre del inquilino
+     * @param nombre_inquilino nombre del inquilino
+     */
     public void setNombre_inquilino(String nombre_inquilino) {
         this.nombre_inquilino = nombre_inquilino;
     }
 
+    
+    /** 
+     * Metodo Get para el nombre_inquilino
+     * @return String del nombre del inquilino
+     */
     public String getNombre_inquilino() {
         return nombre_inquilino;
     }
 
+    
+    /** 
+     * Metodo Get para la dirección del inmueble
+     * @return String de la dirección del inmueble
+     */
     public String getDireccion_inmueble() {
         return direccion_inmueble;
     }
 
+    
+    /** 
+     * Metodo Set para la direccion del inmueble
+     * @param direccion_inmueble direccion del inmueble
+     */
     public void setDireccion_inmueble(String direccion_inmueble) {
         this.direccion_inmueble = direccion_inmueble;
     }

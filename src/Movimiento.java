@@ -1,3 +1,8 @@
+/********
+ * Clase movimiento, para guardar los gastos o ganancias de los inquilinos en su respectivo vector
+ * 
+ */
+
 public class Movimiento {
     private boolean tipoMovimiento;// 1 = ingreso or 0 = gasto
     private int id_inmueble;
@@ -6,6 +11,13 @@ public class Movimiento {
     private String nombre_inquilino;
 
 
+    
+    /** 
+     * Metodo para identificar un movimiento y guardarlo como gasto en el vector con un Booleano
+     * @param pos_inm Posición del inmueble en el vector
+     * @param pos_inqui Posición del inquilino en el vector
+     * @param importe Cantidad gastada 
+     */
     public static void identificarGasto(int pos_inm, int pos_inqui, float importe) {
         Movimiento gasto = new Movimiento();
         gasto.setTipoMovimiento(false);
@@ -17,7 +29,9 @@ public class Movimiento {
         Main.movimientos.addElement(gasto);
     }
 
-
+    /*
+     * Metodo para buscar  movimientos en el vector con el ID del cliente
+     */
     public static void buscarMovimiento() {
         System.out.println("Inserte el ID del respectivo cliente: ");
         int id = Main.escanearInt();
@@ -37,6 +51,12 @@ public class Movimiento {
         }
     }
 
+    
+    /**    
+     * Metodo para guardar en el vector de Movimientos y registrarlo como Ganancia
+     * @param pos_inqui Posición de inquilino en el vector
+     * @param importe Cantidad de dinero movido
+     */
     public static void identificarGanancia(int pos_inqui, Double importe) {
         Movimiento ganancia = new Movimiento();
         ganancia.setTipoMovimiento(true);
@@ -47,7 +67,10 @@ public class Movimiento {
         Main.movimientos.addElement(ganancia);
 
     }
-
+    /**
+     * Metodo para buscar solo ganancias en el vector de Movimientos
+     * @param ID ID del cliente
+     */
     public static void buscarGanancias() {
         System.out.println("Inserte el ID del respectivo cliente: ");
         int id = Main.escanearInt();
@@ -65,7 +88,10 @@ public class Movimiento {
 
 
     }
-
+    /**
+     * Metodo para buscar solo gastos en el vector de Movimientos 
+     * @param ID ID del cliente
+     */
     public static void buscarGastos() {
         System.out.println("Inserte el ID del respectivo cliente: ");
         int id = Main.escanearInt();
@@ -82,6 +108,11 @@ public class Movimiento {
         }
     }
 
+    
+    /**    
+     * Metodo para verificar si existe el cliente en los movimientos
+     * @param id ID del cliente
+     */
     public static void verificarMovimientos(int id) {
         for (int i = 0; i < Main.movimientos.size(); i++) {
             if (id == ((Movimiento) Main.movimientos.elementAt(i)).getId_inquilino()) {
@@ -96,46 +127,83 @@ public class Movimiento {
     }
 
 
+    
+    /**   
+     * 
+     * @param id_inmueble
+     */
     public void setId_inmueble(int id_inmueble) {
         this.id_inmueble = id_inmueble;
     }
 
 
+    
+    /** 
+     * @param id_inquilino
+     */
     public void setId_inquilino(int id_inquilino) {
         this.id_inquilino = id_inquilino;
     }
 
 
+    
+    /** 
+     * @param importe
+     */
     public void setImporte(float importe) {
         this.importe = importe;
     }
 
 
+    
+    /** 
+     * @param nombre_inquilino
+     */
     public void setNombre_inquilino(String nombre_inquilino) {
         this.nombre_inquilino = nombre_inquilino;
     }
 
 
+    
+    /** 
+     * @param tipoMovimiento
+     */
     public void setTipoMovimiento(boolean tipoMovimiento) {
         this.tipoMovimiento = tipoMovimiento;
     }
 
 
+    
+    /** 
+     * @return int
+     */
     public int getId_inmueble() {
         return id_inmueble;
     }
 
 
+    
+    /** 
+     * @return int
+     */
     public int getId_inquilino() {
         return id_inquilino;
     }
 
 
+    
+    /** 
+     * @return float
+     */
     public float getImporte() {
         return importe;
     }
 
 
+    
+    /** 
+     * @return String
+     */
     public String getNombre_inquilino() {
         return nombre_inquilino;
     }

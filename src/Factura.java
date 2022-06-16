@@ -1,5 +1,9 @@
 import java.util.Random;
 
+/***********
+ * La clase factura para las facturas de los inmuebles a conceptos de Telefono, agua, gas y electricidad
+ * con sus respectivos costos
+ */
 public class Factura {
 
     private float telefono = generarCosto();// Telefono / Agua / Gas / Electricidad
@@ -9,7 +13,9 @@ public class Factura {
     private int id_inmueble;
     private int id_inquilino;
 
-
+    /***********
+     * Metodo para generar la factura de un inmueble con el ID del inmueble y de un cliente registrado
+     */
     public static void generarFactura() {
         if (Main.inmuebles.isEmpty()) {
             System.out.println("Usted no tiene inmuebles registrados, registre primero.");
@@ -51,6 +57,11 @@ public class Factura {
     }
 
 
+    
+    /** 
+     * Metodo para mostrar una factura del vector Facturas con el ID del inmueble
+     * @return int ID del inmueble
+     */
     public static int mostrarFactura() {
         if (Main.facturas.isEmpty() || Main.inmuebles.isEmpty()) {
             System.out.println("No tiene ningún inmueble registrado o factura generada.");
@@ -84,6 +95,11 @@ public class Factura {
     }
 
 
+    
+    /** 
+     * Metodo para pagar facturas con el ID del inmueble
+     * @param id id del inmueble
+     */
     public static void pagar_factura(int id) {
 
         System.out.println("¿Cual es la ID del cliente pagando?");
@@ -96,7 +112,6 @@ public class Factura {
         int pos_factura = buscar_pos_id_factura(id);
         int pos_pagando = Inquilino.buscar_pos_id_inquilino(id_pagando);
         float pago_factura;
-        float pago_registrado = 0;
         System.out.println("¿En cual factura del inmueble va a aportar?");
         System.out.println("1 = Telefono | 2 = Agua | 3 = Gas | 4 = Electricidad");
         int opcion = Main.escanearInt();
@@ -111,7 +126,6 @@ public class Factura {
                     Main.back_to_main();
                 }
                 System.out.println("¿De cuanto será su aporte?");
-                pago_registrado = ((Factura) Main.facturas.elementAt(pos_factura)).telefono - pago_factura;
                 ((Factura) Main.facturas.elementAt(pos_factura)).telefono = verificar_pago(pago_factura, ((Factura) Main.facturas.elementAt(pos_factura)).telefono, pos_pagando, pos_inmueble);
                 System.out.println("La factura de telefono ha quedado en: " + ((Factura) Main.facturas.elementAt(pos_factura)).telefono + " peso(s). ");
                 break;
@@ -124,7 +138,6 @@ public class Factura {
                     Main.salto_espacio();
                     Main.back_to_main();
                 }
-                pago_registrado = ((Factura) Main.facturas.elementAt(pos_factura)).agua - pago_factura;
                 ((Factura) Main.facturas.elementAt(pos_factura)).agua = verificar_pago(pago_factura, ((Factura) Main.facturas.elementAt(pos_factura)).agua, pos_pagando, pos_inmueble);
                 System.out.println("La factura de agua ha quedado en: " + ((Factura) Main.facturas.elementAt(pos_factura)).agua + " peso(s). ");
                 break;
@@ -137,7 +150,6 @@ public class Factura {
                     Main.salto_espacio();
                     Main.back_to_main();
                 }
-                pago_registrado = ((Factura) Main.facturas.elementAt(pos_factura)).gas - pago_factura;
                 ((Factura) Main.facturas.elementAt(pos_factura)).gas = verificar_pago(pago_factura, ((Factura) Main.facturas.elementAt(pos_factura)).gas, pos_pagando, pos_inmueble);
                 System.out.println("La factura de gas ha quedado en: " + ((Factura) Main.facturas.elementAt(pos_factura)).gas + " peso(s). ");
 
@@ -151,7 +163,6 @@ public class Factura {
                     Main.salto_espacio();
                     Main.back_to_main();
                 }
-                pago_registrado = ((Factura) Main.facturas.elementAt(pos_factura)).electricidad - pago_factura;
                 ((Factura) Main.facturas.elementAt(pos_factura)).electricidad = verificar_pago(pago_factura, ((Factura) Main.facturas.elementAt(pos_factura)).electricidad, pos_pagando, pos_inmueble);
                 System.out.println("La factura de electricidad ha quedado en: " + ((Factura) Main.facturas.elementAt(pos_factura)).electricidad + " peso(s). ");
                 break;
@@ -167,6 +178,15 @@ public class Factura {
     }
 
 
+    
+    /** 
+     * Verificar el pago de la factura y cobrarle a la cuenta del cliente
+     * @param pago
+     * @param factura
+     * @param pos_pagando
+     * @param pos_inmueble
+     * @return float Factura después del pago
+     */
     public static float verificar_pago(float pago, float factura, int pos_pagando, int pos_inmueble) {
         Double cuenta = ((Cuenta) Main.cuentas.elementAt(pos_pagando)).getCuenta();
 
@@ -189,6 +209,12 @@ public class Factura {
     }
 
 
+    
+    /** 
+     * Metodo para buscar la posición del id de la factura en el Vector
+     * @param id ID del inmueble 
+     * @return int posición del ID de la factura
+     */
     public static int buscar_pos_id_factura(int id) {
         for (int i = 0; i < Main.facturas.size(); i++) {
             if (id == ((Factura) Main.facturas.elementAt(i)).id_inmueble) {
@@ -199,6 +225,11 @@ public class Factura {
     }
 
 
+    
+    /** 
+     * Metodo para verificar si la factura está repetida en el vector con el ID del inmueble
+     * @param id ID del inmueble
+     */
     public void verificar_factura_repetida(int id) {
         for (int i = 0; i < Main.facturas.size(); i++) {
             if (id == ((Factura) Main.facturas.elementAt(i)).id_inmueble) {
@@ -208,7 +239,9 @@ public class Factura {
             }
         }
     }
-
+    /*******
+     * Verifica si la factura está a paz y salvo después de haber terminado de pagar su totalidad 
+     */
     public static void verificar_factura_pagada() {
         float cobro_total = 1;
         for (int i = 0; i < Main.facturas.size(); i++) {
@@ -223,6 +256,11 @@ public class Factura {
         }
     }
 
+    
+    /** 
+     * Genera los costos de las facturas con la libreria Random
+     * @return float Costo de factura
+     */
     public float generarCosto() {
         float min = 25000;
         float max = 400000;

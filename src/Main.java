@@ -1,4 +1,8 @@
-
+/********
+ * 
+ * La clase Main, donde se ubican los vectores que almanecenan datos y redirige al usuario a través de menús
+ * 
+ */
 
 import java.util.Scanner;
 import java.util.Random;
@@ -54,12 +58,17 @@ public class Main {
     public static Vector alquileres = new Vector(10, 2);
 
 
+    
+    
     public static void main(String[] args) {
 
         imprimirMenu();
 
     }
-
+    /********
+     * Metodo para 5 segundos de pausa para el usuario.
+     * 
+     */
     public static void salto_espacio() {
         System.out.println("\nPor favor, espere, no ingrese nada aún.");
         try {
@@ -71,11 +80,21 @@ public class Main {
     }
 
 
+    
+    /** 
+     * Metodo para escanear Strings
+     * @return String
+     */
     public static String escanear() {
         return leer.nextLine();
     }
 
 
+    
+    /** 
+     * Metodo para escanear enteros
+     * @return int
+     */
     public static int escanearInt() {
         try {
             int numero = Integer.parseInt(leer.nextLine());
@@ -91,6 +110,11 @@ public class Main {
     }
 
 
+    
+    /** 
+     * Metodo para escanear Doubles
+     * @return Double
+     */
     public static Double escanearDouble() {
         try {
             double numero = Double.parseDouble(leer.nextLine());
@@ -106,6 +130,11 @@ public class Main {
     }
 
 
+    
+    /** 
+     * Metodo para escanear Float
+     * @return Float
+     */
     public static Float escanearFloat() {
         try {
             Float numero = Float.parseFloat(leer.nextLine());
@@ -121,11 +150,19 @@ public class Main {
     }
 
 
+    
+    /** 
+     * Metodo para retornar un entero aleatorio entre 1 y 99999
+     * @return entero aleatorio entre 1 y 99999
+     */
     public static int nuevo_ID() {
         int id = (new Random().nextInt(99999) + 1);
         return id;
     }
 
+    /*******
+     * Metodo para imprimir el menú principal del programa
+     */
     private static void imprimirMenu() {
         System.out.println("Bienvenido a la agencia inmobliaria. ");
         System.out.println("\n Seleccione un metodo: ");
@@ -171,7 +208,9 @@ public class Main {
 
         }
     }
-
+    /**
+     * Metodo para imprimir el menú de Gestión de inmuebles
+     */
     private static void menu_Inmuebles() {
         System.out.println("\nUsted ha escogido 'Gestión de inmuebles' ");
         System.out.println("1: Registrar inmueble");
@@ -202,7 +241,9 @@ public class Main {
         }
     }
 
-
+    /******
+     * Metodo para imprimir el menú de consulta de Inmuebles
+     */
     private static void menu_consulta_inmuebles() {
         System.out.println("\nUsted ha escogido 'Consulta de Inmuebles' ");
         System.out.println("1: Buscar un inmueble");
@@ -228,7 +269,9 @@ public class Main {
                 menu_consulta_inmuebles();
         }
     }
-
+    /*******
+     * Metodo para imprimir el menú de Gestión de usuarios
+     */
     public static void menu_gestion_usuarios() {
         System.out.println("\nUsted ha escogido 'Gestión de usuarios' ");
         System.out.println("1: Registrar un cliente");
@@ -257,7 +300,9 @@ public class Main {
                 menu_gestion_usuarios();
         }
     }
-
+    /*******
+     * Metodo para imprimir el menú de Gestión de Facturas
+     */
     public static void menu_Gestion_Facturas() {
         System.out.println("\nUsted ha escogido 'Gestión de Facturas' ");
         System.out.println("1. Generar factura del inmueble");
@@ -289,7 +334,9 @@ public class Main {
         }
 
     }
-
+    /********
+     * Metodo para imprimir el menú de Gestión de cuentas
+     */
     public static void menu_Gestion_Cuentas() {
         System.out.println("\nUsted ha escogido 'Gestión de cuentas bancarias' ");
         System.out.println("1: Abrir cuenta para cliente.");
@@ -321,7 +368,9 @@ public class Main {
         }
 
     }
-
+    /********
+     * Metodo para imprimir el menú de Consulta de movimientos
+     */
     public static void menu_Consulta_movimientos() {
         System.out.println("\nUsted ha escogido 'Consulta de movimientos' ");
         System.out.println("1: Consultar todos los movimientos de un cliente.");
@@ -353,7 +402,9 @@ public class Main {
         }
 
     }
-
+    /********
+     * Metodo para imprimir el menú de Gestión de alquiler
+     */
     public static void menu_gestion_alquiler() {
         System.out.println("\nUsted ha escogido 'Gestión de alquiler' ");
         System.out.println("1. Alquilar un inmueble.");
@@ -386,7 +437,9 @@ public class Main {
                 menu_gestion_alquiler();
         }
     }
-
+    /*******
+     * Metodo para volver al Main, utilizado en las otras clases.
+     */
     public static void back_to_main() {
         imprimirMenu();
     }
