@@ -3,6 +3,27 @@ import java.util.Random;
 /***********
  * La clase factura para las facturas de los inmuebles a conceptos de Telefono, agua, gas y electricidad
  * con sus respectivos costos
+ * 
+ * 
+ * ************************************************
+ *  * Palabra de honor:
+ * - No he discutido ni mostrado el código de mi programa con alguien que no sea mi compañero
+ * Profesor o con el monitor asignado a este curso
+ *
+ * - No he utilizado código obtenido de otro u otros estudiantes,
+ * O cualquier otra fuente no autorizada, ya sea modificado o sin modificar.
+ *
+ * - Si cualquier código o documentación utilizada en mi programa
+ * Fue obtenido de otra fuente, tal como Internet, un libro de texto o curso
+ * Notas, debe ser claramente señalado con una cita apropiada en
+ * Los comentarios de mi programa.
+ *
+ * Eduardo José Jimenez - 0222010055
+ * Jesús David Navarro - 0222010036
+ *
+ *
+ **************************************************
+ * 
  */
 public class Factura {
 

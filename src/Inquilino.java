@@ -2,6 +2,26 @@
  * La clase inquilino, inquilino es aquél cliente que puede alquilar inmuebles pagando el precio
  * abrir cuenta bancaria en la agencia inmobliaria, pagar facturas
  * es la base del proyecto junto al Inmueble
+ * 
+ * *******************************************************
+ *  * Palabra de honor:
+ * - No he discutido ni mostrado el código de mi programa con alguien que no sea mi compañero
+ * Profesor o con el monitor asignado a este curso
+ *
+ * - No he utilizado código obtenido de otro u otros estudiantes,
+ * O cualquier otra fuente no autorizada, ya sea modificado o sin modificar.
+ *
+ * - Si cualquier código o documentación utilizada en mi programa
+ * Fue obtenido de otra fuente, tal como Internet, un libro de texto o curso
+ * Notas, debe ser claramente señalado con una cita apropiada en
+ * Los comentarios de mi programa.
+ *
+ * Eduardo José Jimenez - 0222010055
+ * Jesús David Navarro - 0222010036
+ *
+ *
+ **************************************************
+ * 
  */
 
 public class Inquilino {
