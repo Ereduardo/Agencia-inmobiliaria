@@ -1,6 +1,26 @@
+
+
 import java.util.Scanner;
 import java.util.Random;
 import java.util.Vector;
+
+/************************************************* ***********************
+ * Palabra de honor:
+ * - No he discutido ni mostrado el código de mi programa con alguien que no sea mi compañero
+ * Profesor o con el monitor asignado a este curso
+ *
+ * - No he utilizado código obtenido de otro u otros estudiantes,
+ * O cualquier otra fuente no autorizada, ya sea modificado o sin modificar.
+ *
+ * - Si cualquier código o documentación utilizada en mi programa
+ * Fue obtenido de otra fuente, tal como Internet, un libro de texto o curso
+ * Notas, debe ser claramente señalado con una cita apropiada en
+ * Los comentarios de mi programa.
+ *
+ * Eduardo José Jimenez - 0222010055
+ *
+ *
+ **************************************************
 
 /**
  * 
@@ -16,8 +36,10 @@ import java.util.Vector;
  * Utilizado para System.exit(0) para salir del programa
  * 
  * 
- * 
- * 
+ * https://docs.oracle.com/javase/8/docs/api/java/util/Vector.html
+ * Utilizado para el uso de Vectores en java.
+ *
+ *
  * 
  */
 
@@ -40,7 +62,7 @@ public class Main {
     }
 
     public static void salto_espacio(){
-        System.out.println("\nPor favor, esperar.");
+        System.out.println("\nPor favor, espere, no ingrese nada aún.");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -94,15 +116,6 @@ public class Main {
     }
 
     
-    
-    public static Boolean comparar_String(String a, String b) {
-        Boolean validar = a.equalsIgnoreCase(b);
-        return validar;
-
-    }
-
-    
-    
     public static int nuevo_ID(){
         int id = (new Random().nextInt(99999)+1); 
         return id;
@@ -117,34 +130,37 @@ public class Main {
         System.out.println("3. Gestión de Usuarios");
         System.out.println("4. Gestión de Facturas");
         System.out.println("5. Consulta de movimientos");
-        System.out.println("6. Gestión de cuentas");
+        System.out.println("6. Gestión de cuentas bancarias");
         System.out.println("7. Gestión de alquiler");
         System.out.println("8. Salir");
+        System.out.print("Opción: ");
         switch(escanearInt()){
             case 1:
-            menu_Inmuebles();
+                menu_Inmuebles();
             break;
             case 2: 
-            menu_consulta_inmuebles();
+                menu_consulta_inmuebles();
             break;
             case 3: 
-            menu_gestion_usuarios();
+                menu_gestion_usuarios();
             break;
             case 4:
-            menu_Gestion_Facturas();
+                menu_Gestion_Facturas();
             break;
             case 5:
-            menu_Consulta_movimientos();
+                menu_Consulta_movimientos();
             break;
             case 6:
-            menu_Gestion_Cuentas();
+                menu_Gestion_Cuentas();
             break;
             case 7:
-            menu_gestion_alquiler();
+                menu_gestion_alquiler();
             break;
             case 8: System.exit(0);
             break;
-            default: 
+            default:
+                System.out.println("Ingrese una opción dentro del menú.");
+                    Main.salto_espacio();
             imprimirMenu();
         
         }
@@ -156,22 +172,26 @@ public class Main {
         System.out.println("2: Modificar inmueble");
         System.out.println("3: Eliminar inmueble");
         System.out.println("4: Salir");
+        System.out.print("Opción: ");
         switch(escanearInt()){
             case 1:
-            Inmueble inmueble_Registrado = new Inmueble();
+                Inmueble inmueble_Registrado = new Inmueble();
             menu_Inmuebles();
             break;
             case 2:
-            Inmueble.modificarInmueble();
+                Inmueble.modificarInmueble();
             menu_Inmuebles();
             break;
             case 3:
-            Inmueble.eliminarInmueble();
+                Inmueble.eliminarInmueble();
             menu_Inmuebles();
             break;
             case 4: main(null);
             break;
-            default: menu_Inmuebles();
+            default:
+                System.out.println("Ingrese una opción dentro del menú.");
+                Main.salto_espacio();
+                menu_Inmuebles();
         }
     } 
 
@@ -182,19 +202,23 @@ public class Main {
         System.out.println("1: Buscar un inmueble");
         System.out.println("2: Ver todos los inmuebles registrados");
         System.out.println("3: Regresar");
+        System.out.print("Opción: ");
 
         switch(escanearInt()){
             case 1:
-            Inmueble.mostrarInmueble();
+                Inmueble.mostrarInmueble();
             menu_consulta_inmuebles();
             break;
             case 2:
-            Inmueble.mostrarTodosLosinmuebles();
+                Inmueble.mostrarTodosLosinmuebles();
             menu_consulta_inmuebles();
             break;
             case 3: main(null);
             break;
-            default: menu_consulta_inmuebles();
+            default:
+                System.out.println("Ingrese una opción dentro del menú.");
+                        Main.salto_espacio();
+                menu_consulta_inmuebles();
         }
     }
 
@@ -204,22 +228,26 @@ public class Main {
         System.out.println("2: Buscar un cliente");
         System.out.println("3: Eliminar un cliente");
         System.out.println("4: Regresar");
+        System.out.print("Opción: ");
 
         switch (escanearInt()){
             case 1:
-            Inquilino registrar = new Inquilino();
+                Inquilino registrar = new Inquilino();
             break;
             case 2:
-            Inquilino.buscarInquilino();
+                Inquilino.buscarInquilino();
             main(null);
             break;
             case 3:
-            Inquilino.renunciarInquilino(Inquilino.buscarInquilino());
+                Inquilino.renunciarInquilino(Inquilino.buscarInquilino());
             break;
             case 4:
             main(null);
             break;
-            default: menu_gestion_usuarios();
+            default:
+                System.out.println("Ingrese una opción dentro del menú.");
+                    Main.salto_espacio();
+                menu_gestion_usuarios();
         }
     }
 
@@ -229,48 +257,57 @@ public class Main {
         System.out.println("2. Buscar factura del inmueble");
         System.out.println("3. Aportar a la factura del inmueble");
         System.out.println("4: Regresar");
+        System.out.print("Opción: ");
 
         switch(escanearInt()){
-            case 1: Factura.generarFactura();
+            case 1:
+                Factura.generarFactura();
             back_to_main();
             break;
-            case 2: Factura.mostrarFactura();
+            case 2:
+                Factura.mostrarFactura();
             back_to_main();
             break;
-            case 3: Factura.pagar_factura(Factura.mostrarFactura());
+            case 3:
+                Factura.pagar_factura(Factura.mostrarFactura());
             back_to_main();
             break;
             case 4: back_to_main();
             break;
             default:
+                System.out.println("Ingrese una opción dentro del menú.");
+                Main.salto_espacio();
             menu_Gestion_Facturas();
         }
 
     }
 
     public static void menu_Gestion_Cuentas(){
-        System.out.println("\nUsted ha escogido 'Gestión de cuentas' ");
+        System.out.println("\nUsted ha escogido 'Gestión de cuentas bancarias' ");
         System.out.println("1: Abrir cuenta para cliente.");
         System.out.println("2: Revisar saldo de cuenta.");
         System.out.println("3: Consignar saldo a cuenta.");
         System.out.println("4: Regresar");
+        System.out.print("Opción: ");
 
         switch(escanearInt()){
             case 1: Cuenta abrir = new Cuenta();
             menu_Gestion_Cuentas();
             break;
             case 2:
-            Cuenta.mostrarSaldoCuenta();
+                Cuenta.mostrarSaldoCuenta();
             menu_Gestion_Cuentas();
             break;
             case 3:
-            Cuenta.consignarCuenta();
+                Cuenta.consignarCuenta();
             menu_Gestion_Cuentas();
             break;
             case 4:
             back_to_main();
             break;
             default:
+                System.out.println("Ingrese una opción dentro del menú.");
+                Main.salto_espacio();
             menu_Gestion_Cuentas();
         }
 
@@ -282,24 +319,27 @@ public class Main {
         System.out.println("2: Consultar todos los gastos de un cliente.");
         System.out.println("3: Consultar todas las ganancias de un cliente.");
         System.out.println("4: Regresar.");
+        System.out.print("Opción: ");
 
         switch(escanearInt()){
             case 1:
-            Movimiento.buscarMovimiento();
+                Movimiento.buscarMovimiento();
             menu_Consulta_movimientos();
             break;
             case 2:
-            Movimiento.buscarGastos();
+                Movimiento.buscarGastos();
             menu_Consulta_movimientos();
             break;
             case 3:
-            Movimiento.buscarGanancias();
+                Movimiento.buscarGanancias();
             menu_Consulta_movimientos();
             break;
             case 4:
             back_to_main();
             break;
             default:
+                System.out.println("Ingrese una opción dentro del menú.");
+                Main.salto_espacio();
             menu_Consulta_movimientos();
         }
 
@@ -310,23 +350,29 @@ public class Main {
         System.out.println("1. Alquilar un inmueble.");
         System.out.println("2. Verifica alquiler de un inmueble.");
         System.out.println("3. Mostrar todos los alquileres de un cliente. ");
+        System.out.println("4. Des-alquilar un inmueble.");
         System.out.println("4. Regresar");
+        System.out.print("Opción: ");
         switch(escanearInt()){
             case 1:
-            Alquiler registrar = new Alquiler();
+                Alquiler registrar = new Alquiler();
             menu_gestion_alquiler();
             break;
             case 2: 
-            Alquiler.mostrarAlquiler_inmueble();
+                Alquiler.mostrarAlquiler_inmueble();
             menu_gestion_alquiler();
             break;
             case 3:
-            Alquiler.mostrarAlquileres_inquilino();
+                Alquiler.mostrarAlquileres_inquilino();
             menu_gestion_alquiler();
             break;
-            case 4: back_to_main();
+            case 4:
+                Alquiler.desalquilar();
+            case 5: back_to_main();
             break;
             default:
+                System.out.println("Ingrese una opción dentro del menú.");
+                Main.salto_espacio();
             menu_gestion_alquiler();
         }
     }

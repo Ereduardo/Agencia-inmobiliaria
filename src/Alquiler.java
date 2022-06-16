@@ -120,6 +120,39 @@ public class Alquiler {
     }
 
 
+    public static void desalquilar(){
+        System.out.println("Ingrese el ID del alquilador.");
+        int id_alquilador = Main.escanearInt();
+        verificarAlquiler_inquilino(id_alquilador);
+        System.out.println("Ingrese el ID del inmueble a desalquilar");
+        int id_inmueble = Main.escanearInt();
+        verificarAlquiler_inmueble(id_inmueble);
+            for(int i=0;i<Main.alquileres.size();i++){
+                if(((Alquiler)Main.alquileres.elementAt(i)).inquilino_id==id_alquilador && ((Alquiler)Main.alquileres.elementAt(i)).inmueble_id == id_inmueble){
+                    System.out.println("Se ha encontrado su respectivo alquiler cliente.");
+                    System.out.println("Actual dueño de alquiler. "+((Alquiler)Main.alquileres.elementAt(i)).nombre_inquilino);
+                    System.out.println("Dirección del inmueble: "+((Alquiler)Main.alquileres.elementAt(i)).direccion_inmueble);
+                    System.out.println("¿Desea eliminar este alquiler?");
+                    if(Main.escanearInt()!=1){
+                        eliminarAlquiler(i,id_inmueble);
+                    }
+
+                }
+            }
+        System.out.println("No se ha encontrado un alquiler de ese inmueble siendo este cliente el actual dueño, por favor, verificar si los ID son correctos.");
+            Main.salto_espacio();
+    }
+
+        public static void eliminarAlquiler(int pos_alquiler, int id_inmueble){
+
+        int pos_inmueble = Inmueble.buscar_pos_id_inmueble(id_inmueble);
+            ((Inmueble)Main.inmuebles.elementAt(pos_inmueble)).id_cliente = 0;
+            Main.alquileres.removeElementAt(pos_alquiler);
+            System.out.println("Alquiler eliminado correctamente...");
+            Main.salto_espacio();
+            Main.back_to_main();
+
+        }
 
     public int getInquilino_id() {
         return inquilino_id;

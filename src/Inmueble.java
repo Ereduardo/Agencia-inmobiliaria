@@ -1,10 +1,10 @@
 public class Inmueble {
+    protected int id_cliente = 0;
     protected String direccion;
     protected String descripcionInmueble;
     protected int codigoPostal;
     protected double precioAlquiler;
     protected int iD_inmueble = Main.nuevo_ID();
-    protected int id_cliente = 0;
     
     Inmueble(){
         registrarInmueble(this);
@@ -112,7 +112,13 @@ public class Inmueble {
                     System.out.println("Descripción: "+((Inmueble)Main.inmuebles.elementAt(i)).descripcionInmueble);
                     System.out.println("Codigo postal: "+((Inmueble)Main.inmuebles.elementAt(i)).codigoPostal);
                     System.out.println("Precio de alquiler: "+((Inmueble)Main.inmuebles.elementAt(i)).precioAlquiler);
-                    System.out.println("ID: "+((Inmueble)Main.inmuebles.elementAt(Main.inmuebles.size()-1)).iD_inmueble);
+                    System.out.println("ID: "+((Inmueble)Main.inmuebles.elementAt(i)).iD_inmueble);
+                    if(((Inmueble)Main.inmuebles.elementAt(i)).id_cliente!=0){
+                        int pos_inqui = Inquilino.buscar_pos_id_inquilino(((Inmueble)Main.inmuebles.elementAt(i)).id_cliente);
+                        System.out.println("Nombre del alquilador: "+((Inquilino)Main.usuarios.elementAt(i)).getNombre());
+                    }else{
+                        System.out.println("Inmueble sin actual alquilador.");
+                    }
                     Main.salto_espacio();
                 }
             }
@@ -170,6 +176,12 @@ public class Inmueble {
                     System.out.println("Descripción: "+((Inmueble)Main.inmuebles.elementAt(i)).descripcionInmueble);
                     System.out.println("Codigo postal: "+((Inmueble)Main.inmuebles.elementAt(i)).codigoPostal);
                     System.out.println("Precio de alquiler: "+((Inmueble)Main.inmuebles.elementAt(i)).precioAlquiler);
+                if(((Inmueble)Main.inmuebles.elementAt(i)).id_cliente!=0){
+                    int pos_inqui = Inquilino.buscar_pos_id_inquilino(((Inmueble)Main.inmuebles.elementAt(i)).id_cliente);
+                    System.out.println("Nombre del alquilador: "+((Inquilino)Main.usuarios.elementAt(i)).getNombre());
+                }else{
+                    System.out.println("Inmueble sin actual alquilador.");
+                }
                     Main.salto_espacio();
             }
             
