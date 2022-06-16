@@ -202,10 +202,10 @@ public class Factura {
     
     /** 
      * Verificar el pago de la factura y cobrarle a la cuenta del cliente
-     * @param pago
-     * @param factura
-     * @param pos_pagando
-     * @param pos_inmueble
+     * @param pago pago de la factura
+     * @param factura Costo de la factura
+     * @param pos_pagando posición del cliente pagando en el vector
+     * @param pos_inmueble posición del inmueble en el vector
      * @return float Factura después del pago
      */
     public static float verificar_pago(float pago, float factura, int pos_pagando, int pos_inmueble) {

@@ -44,7 +44,8 @@ import java.util.Vector;
  * https://docs.oracle.com/javase/8/docs/api/java/util/Vector.html
  * Utilizado para el uso de Vectores en java.
  *
- *
+ *https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
+ * Utilizado para el metodo de numeros aleatorios como nuevo_ID() o generarCosto()
  *
  */
 
